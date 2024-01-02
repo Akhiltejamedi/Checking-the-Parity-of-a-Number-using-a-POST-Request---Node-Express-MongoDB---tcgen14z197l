@@ -12,6 +12,23 @@ const server = http.createServer((req, res) => {
       const value = obj.num1;
     
      // Write the code here to check if the number is odd or even
+      if(isNaN(value))
+      {
+        res.writeHead(400,{"Content-Type":"text/plain"});
+        res.end(JSON,stringify({error:errorMessage}));
+      }
+      else
+      { if(value%2==0)
+        {
+        res.writeHead(200,{"Content-Type":"text/plain"});
+        res.end("The number is Even");
+        }
+        else
+        {
+          res.writeHead(404,{"Content-Type":"text/plain"});
+          res.end("The number is Odd");
+        }
+      }
 
    });
   }
